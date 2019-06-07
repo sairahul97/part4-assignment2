@@ -9,6 +9,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -83,6 +86,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         );
 
         queue.add(jsObjRequest);
+
+        final FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(MapsActivity.this);
+
+
+        LocationRequest req = new LocationRequest();
+
+        req.setInterval(10000); // 10 seconds
+
+        req.setFastestInterval(500); // 500 milliseconds
+        req.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
 
 
     }
