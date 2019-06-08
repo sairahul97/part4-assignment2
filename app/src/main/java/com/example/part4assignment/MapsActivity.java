@@ -54,14 +54,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-    //            StringBuilder localities = new StringBuilder();
-      //          StringBuilder latitude = new StringBuilder();
 
                 try {
                     JSONArray data = response.getJSONArray("results");
-    //                JSONArray data1 = response.getJSONArray("latitude");
-
-
 
                     for (int index = 0; index < data.length(); index++) {
 
@@ -74,13 +69,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         m = mMap.addMarker(mo);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(cl));
                         mMap.resetMinMaxZoomPreference();
-//                        localities.append(data.get(index) + "\n");
-//                        latitude.append(data1.get(index) + "\n");
+
 
                     }
 
-//                    localities.append(data.get(0));
-//                    localities.append(data.get(1));
+
                     System.err.println(data);
                 }
 
@@ -145,45 +138,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     REQUEST_LOCATION);
             // Permission has already been granted
 
-//            client.requestLocationUpdates(req, new LocationCallback() {
-//                @Override
-//                public void onLocationResult(LocationResult locationResult) {
-//                    Log.e("location:", locationResult.getLastLocation().toString());
-//
-//                    Toast.makeText(MapsActivity.this, locationResult.getLastLocation().toString(), Toast.LENGTH_LONG).show();
-// Add a marker in Sydney and move the camera
-//                    LatLng clocation = new LatLng(locationResult.getLastLocation().getLatitude(), locationResult.getLastLocation().getLongitude());
-//                    mMap.clear();
-//                    mMap.addMarker(new MarkerOptions().position(clocation).title("Current Location"));
-//                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(clocation, 17.2f));
-
                 }
             }
 
-
-
-
-
-
-
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
